@@ -1,0 +1,82 @@
+/* App theme: soft gradient background and elevated cards */
+body {
+	/* Simplified clean surface for maximum readability */
+	background: #f6f8fb;
+}
+
+.card.shadow-sm {
+	transition: box-shadow .25s ease, transform .25s ease;
+	border-radius: 14px;
+}
+.card.shadow-sm:hover {
+	/* Keep a clean hover without shifting text */
+	transform: none;
+	box-shadow: 0 12px 28px rgba(0,0,0,.07);
+}
+
+/* Pulse emphasis for primary actions */
+.btn-primary.pulse {
+	position: relative;
+}
+.btn-primary.pulse::after {
+	content: '';
+	position: absolute;
+	inset: -6px;
+	border-radius: 10px;
+	border: 2px solid rgba(13,110,253,.35);
+	animation: pulse 1.6s ease-out infinite;
+}
+@keyframes pulse {
+	0% { opacity: .7; transform: scale(.98); }
+	70% { opacity: 0; transform: scale(1.15); }
+	100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* Table row subtle reveal */
+tr.fade-in {
+	animation: fadeInUp .35s ease both;
+}
+@keyframes fadeInUp {
+	0% { opacity: 0; transform: translateY(6px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Input focus glow */
+.form-control:focus {
+	box-shadow: 0 0 0 .25rem rgba(13,110,253,.15);
+}
+
+/* Header polish */
+.app-title {
+	font-weight: 700;
+	letter-spacing: .2px;
+}
+
+/* Device list readability */
+.devices-list .list-group-item {
+	background-color: #fff; /* stronger surface to improve contrast over gradient */
+    border: 1px solid #eef1f6;
+    filter: none;
+    backdrop-filter: none;
+}
+.devices-list .device-title {
+	font-weight: 600;
+	color: #0f172a; /* near-black for crispness */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+.devices-list .device-meta {
+	color: #475569; /* darker than .text-muted for contrast */
+	font-size: 0.82rem;
+	letter-spacing: .1px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Avoid transform-based blur on list items after motion animations */
+.devices-list .list-group-item, .devices-list .list-group-item * {
+    transform: translateZ(0);
+}
+
